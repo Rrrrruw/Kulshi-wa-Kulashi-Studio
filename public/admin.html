@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>لوحة المطورين | استديو رفودي العراقي</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&family=Tajawal:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">استديو رفودي العراقي</span>
+    </div>
+    <nav class="topnav">
+      <a href="index.html" class="nav-link music-hover">رجوع للموقع الرئيسي</a>
+      <a href="#" id="admin-logout" class="nav-link music-hover">تسجيل خروج</a>
+    </nav>
+  </header>
+
+  <main class="admin-main">
+    <div class="admin-wrap">
+      <span class="tag tag-music">لوحة المطورين</span>
+      <h1 class="admin-heading">إضافة أغنية بالرابط والصورة</h1>
+      <p class="admin-sub">
+        عبّي العنوان، الصق رابط ملف الأغنية المباشر (mp3 يُفضّل)، واختر صورة غلاف. بمجرد الضغط على "نشر"،
+        الأغنية تنضاف مباشرة لقاعدة البيانات وتظهر فوراً بقسم الموسيقى بالموقع الرئيسي.
+      </p>
+
+      <form id="admin-song-form" class="upload-form admin-form">
+        <div class="form-row">
+          <label for="admin-title">عنوان الأغنية *</label>
+          <input type="text" id="admin-title" name="title" required placeholder="مثال: ليل" />
+        </div>
+
+        <div class="form-row">
+          <label for="admin-artist">اسم الفنان (اختياري)</label>
+          <input type="text" id="admin-artist" name="artist" placeholder="مثال: فيروز" />
+        </div>
+
+        <div class="form-row">
+          <label for="admin-url">رابط الأغنية المباشر *</label>
+          <input type="url" id="admin-url" name="audioUrl" required placeholder="https://example.com/song.mp3" />
+        </div>
+
+        <div class="form-row">
+          <label for="admin-cover">صورة الغلاف (اختياري)</label>
+          <input type="file" id="admin-cover" name="cover" accept="image/*" />
+        </div>
+
+        <button type="submit" class="upload-btn">
+          <span id="admin-btn-text">نشر الأغنية على الموقع</span>
+        </button>
+        <p id="admin-status" class="upload-status" role="status"></p>
+      </form>
+    </div>
+
+    <div class="admin-wrap admin-recent">
+      <h2 class="admin-heading admin-heading-sm">آخر الأغاني المضافة</h2>
+      <div id="admin-recent-grid" class="cards-grid"></div>
+      <p id="admin-recent-empty" class="section-note">لم تُضف أي أغنية بعد.</p>
+    </div>
+
+    <div class="admin-wrap admin-recent" id="requests-section">
+      <span class="tag tag-music">طلبات المستخدمين</span>
+      <h2 class="admin-heading admin-heading-sm">طلبات رفع الأغاني</h2>
+      <p class="admin-sub">الطلبات المرسلة من صفحة "اطلب رفع أغنية". وافق عليها لتنشر تلقائياً، أو ارفضها مع كتابة السبب.</p>
+
+      <div class="upload-tabs" id="requests-filter">
+        <button type="button" class="upload-tab is-active" data-status="pending">قيد المراجعة</button>
+        <button type="button" class="upload-tab" data-status="approved">مقبولة</button>
+        <button type="button" class="upload-tab" data-status="rejected">مرفوضة</button>
+        <button type="button" class="upload-tab" data-status="">الكل</button>
+      </div>
+
+      <div id="requests-list" class="requests-list"></div>
+      <p id="requests-empty" class="section-note">لا توجد طلبات بهذه الحالة حالياً.</p>
+    </div>
+  </main>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

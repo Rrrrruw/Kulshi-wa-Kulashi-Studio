@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>استديو رفودي العراقي | موسيقى</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&family=Tajawal:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">استديو رفودي العراقي</span>
+    </div>
+    <nav class="topnav">
+      <a href="#music" class="nav-link music-hover">الموسيقى</a>
+      <a href="request-song.html" class="nav-link music-hover">اطلب رفع أغنية</a>
+      <a href="admin.html" class="nav-link music-hover">لوحة المطورين</a>
+      <div id="account-slot" class="account-slot"></div>
+    </nav>
+  </header>
+
+  <section class="hero hero-solo" id="top">
+    <div class="hero-half hero-music">
+      <p class="eyebrow">مكتبتك الصوتية</p>
+      <h1 class="hero-title">موسيقى</h1>
+      <p class="hero-sub">مساحة لسماع وتنظيم الأغاني، بانتظار أول أسطوانة تُضاف.</p>
+      <svg class="vinyl" viewBox="0 0 200 200" aria-hidden="true">
+        <circle cx="100" cy="100" r="96" class="vinyl-body" />
+        <circle cx="100" cy="100" r="80" class="vinyl-groove" />
+        <circle cx="100" cy="100" r="64" class="vinyl-groove" />
+        <circle cx="100" cy="100" r="48" class="vinyl-groove" />
+        <circle cx="100" cy="100" r="30" class="vinyl-label" />
+        <circle cx="100" cy="100" r="5" class="vinyl-hole" />
+      </svg>
+    </div>
+  </section>
+
+  <main>
+    <section class="content-section music-zone" id="music">
+      <div class="section-head">
+        <span class="tag tag-music">قسم الموسيقى</span>
+        <h2>مكتبة الأغاني</h2>
+        <p class="section-note">تُقرأ الأغاني مباشرة من قاعدة البيانات عبر <code>/api/songs</code>. أضِف أول تسجيلة من لوحة التحكم أو مباشرة إلى قاعدة البيانات ليظهر هنا.</p>
+      </div>
+      <div id="songs-grid" class="cards-grid">
+        <!-- تُملأ الأغاني هنا تلقائياً بعد إضافتها لقاعدة البيانات -->
+      </div>
+      <div id="songs-empty" class="empty-state">
+        <svg class="empty-icon" viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="50" r="42" class="empty-ring" />
+          <path d="M38 34 L38 64 M38 34 L66 28 L66 58" class="empty-note" />
+          <circle cx="34" cy="66" r="8" class="empty-note-fill" />
+          <circle cx="62" cy="60" r="8" class="empty-note-fill" />
+        </svg>
+        <p class="empty-title">لا توجد أغاني بعد</p>
+        <p class="empty-body">بمجرد إضافة أغنية إلى قاعدة البيانات، ستظهر بطاقتها هنا تلقائياً.</p>
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>استديو رفودي العراقي — واجهة أمامية متصلة بـ MongoDB عبر واجهة برمجية Express.</p>
+  </footer>
+
+  <!-- مشغل ثابت أسفل الصفحة: يبقى شغالاً بغض النظر عن أي قسم تتصفحه، ما دام التبويب مفتوح -->
+  <div id="player-bar" class="player-bar" hidden>
+    <div class="player-cover" id="player-cover" aria-hidden="true"></div>
+    <div class="player-info">
+      <p class="player-title" id="player-title">—</p>
+      <p class="player-artist" id="player-artist">—</p>
+    </div>
+
+    <button id="player-toggle" class="player-toggle" aria-label="تشغيل / إيقاف مؤقت">
+      <svg id="icon-play" viewBox="0 0 24 24" class="icon"><path d="M8 5v14l11-7z"/></svg>
+      <svg id="icon-pause" viewBox="0 0 24 24" class="icon" hidden><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+    </button>
+
+    <div class="player-progress-wrap">
+      <span class="player-time" id="player-current">0:00</span>
+      <input type="range" id="player-seek" class="player-seek" min="0" max="100" value="0" />
+      <span class="player-time" id="player-duration">0:00</span>
+    </div>
+  </div>
+
+  <audio id="audio-player" preload="metadata"></audio>
+
+  <script src="js/auth-widget.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

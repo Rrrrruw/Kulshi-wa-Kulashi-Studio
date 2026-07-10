@@ -1,0 +1,6 @@
+node_modules/
+.env
+public/uploads/audio/*
+public/uploads/covers/*
+!public/uploads/audio/.gitkeep
+!public/uploads/covers/.gitkeep
