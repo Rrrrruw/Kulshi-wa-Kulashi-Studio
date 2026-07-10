@@ -89,8 +89,9 @@ mongoose
   .connect(MONGODB_URI)
   .then(() => {
     console.log('✅ تم الاتصال بقاعدة بيانات MongoDB بنجاح');
-    app.listen(PORT, () => {
-      console.log(`🚀 السيرفر يعمل على http://localhost:${PORT}`);
+    // التعديل هنا: تمرير '0.0.0.0' لفتح خط استقبال الترافيك الخارجي من الـ Proxy
+    app.listen(PORT, '0.0.0.0', () => {
+      console.log(`🚀 السيرفر يعمل بنجاح ويستمع للمنفذ: ${PORT}`);
     });
   })
   .catch((err) => {
